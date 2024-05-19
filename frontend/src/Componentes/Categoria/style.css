@@ -1,0 +1,73 @@
+.secao-categorias {
+    max-width: 1324px;
+    margin: 30px auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.container-botoes {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.container-botoes button {
+    padding: 10px 0;
+    flex: 1 1 150px;
+    border: 0;
+    border-radius: 12px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.086);
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.container-botoes img{
+    width: auto;
+    height: 35px;
+    margin-right: 10px;
+}
+
+.container-botoes button:hover {
+    background-color: goldenrod;
+    transition: 0.5s ease;
+}
+
+.apagarBtn {
+    background-color: white;
+}
+
+.acenderBtn {
+    background-color: goldenrod;
+  }
+
+
+
+  @media (max-width: 1324px){
+
+    .container-botoes {
+        margin: 10px;
+    }
+
+    .container-botoes button {
+        font-size: 15px;
+    }
+  }
+  @media(max-width: 1024px){
+    .container-botoes img{
+        width: auto;
+        height: 20px;
+        margin-right: 5px;   
+    }
+  }
+
+
+  

@@ -1,0 +1,122 @@
+  .secao-tabela h2 {
+    color: #139b51;
+    text-align: center;
+    font-size: 30px;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 30px;
+  }
+
+  .secao-tabela {
+    margin: 0 auto;
+    margin-top: 150px;
+  }
+
+  .cards-horario {
+    display: flex;
+    flex-direction: row;
+
+  }
+
+  table {
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+  }
+
+  table img {
+    width: 13px;
+  }
+
+  .table1,
+  .table2,
+  .table3 {
+    border: 0;
+    border-radius: 12px;
+    box-shadow: 0px 5px 10px #333;
+    box-sizing: border-box;
+    max-width: 400px;
+    height: auto;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 10px auto;
+
+  }
+
+  th,
+  td {
+    font-size: 15px;
+    padding: 8px;
+    font-family: "Palanquin Dark", sans-serif;
+    max-height: 50px;
+    min-height: 50px;
+  }
+
+  caption {
+    font-family: "Palanquin Dark", sans-serif;
+    color: black;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    background-color: white;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .dia-da-semana {
+    font-weight: bold;
+  }
+
+  .horarios {
+    color: rgb(97, 97, 97);
+    text-align: right;
+    font-style: italic;
+    font-weight: 600;
+    width: 110px;
+  }
+
+  
+ 
+
+  @media(max-width: 700px) {
+    table caption {
+      font-size: 25px;
+    }
+
+    .dia-da-semana {
+      text-align: left;
+    }
+
+    .endereco {
+      font-size: 13px;
+    }
+
+    .horarios {
+      font-size: 13px;
+    }
+
+    .secao-tabela {
+      margin-top: 100px;
+    }
+
+  
+    
+  }
+
+  @media (max-width: 1324px) {
+    .secao-tabela {
+      padding: 13px;
+    }
+
+    .cards-horario {
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+
+  @media (max-width: 1324px) {
+    
+  }
+
+  
