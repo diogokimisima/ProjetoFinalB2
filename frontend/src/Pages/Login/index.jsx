@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './style.css';
 
 function Login() {
   const [nomeUsuario, setNomeUsuario] = useState('');
   const [senhaUsuario, setSenhaUsuario] = useState('');
-  const [mensagem, setMensagem] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -26,27 +27,30 @@ function Login() {
         },
         body: new URLSearchParams({
           nomeuser: nomeUsuario,
-          senhauser: senhaUsuario
+          senhauser: senhaUsuario,
+          enviar: 'login'
         })
       });
 
-      const data = await response.text();
-      
-      if (response.ok) {
-        setMensagem(data);
-        window.location.href = '/';
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        toast.success(data.message);
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 2000)
       } else {
-        setMensagem(data);
+        toast.error(data.message);
       }
     } catch (error) {
       console.error('Erro:', error);
-      setMensagem('Ocorreu um erro ao realizar o login.');
+      toast.error('Ocorreu um erro ao realizar o login.');
     }
   };
 
   return (
     <div className="container"> 
-      {mensagem && <div className="mensagem">{mensagem}</div>}
+      <ToastContainer />
       <form className="formulario" onSubmit={handleSubmit}>
         <h2>Login</h2>
         <input

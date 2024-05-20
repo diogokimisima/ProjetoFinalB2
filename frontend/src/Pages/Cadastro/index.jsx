@@ -1,5 +1,8 @@
-import './style.css';
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import './style.css';
 
 function Cadastro() {
   const [formData, setFormData] = useState({
@@ -17,7 +20,7 @@ function Cadastro() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     fetch('http://localhost/pastelariakina/backend/cadastro.php', {
       method: 'POST',
       headers: {
@@ -27,28 +30,29 @@ function Cadastro() {
     })
     .then(response => {
       if (!response.ok) {
-        throw new Error('Ocorreu um erro ao cadastrar o usuário.'); // Lança um erro caso a resposta não esteja OK
+        throw new Error('Erro ao cadastrar usuário.');
       }
-      return response.text(); // Retorna o texto da resposta em caso de sucesso
+      return response.json();
     })
     .then(data => {
-      // Aqui você pode fazer o que quiser com a resposta da requisição,
-      // neste caso, podemos exibir a mensagem de sucesso
-      alert('O cadastro foi realizado com sucesso!');
-      window.location.href = '/Login';
-      // ou atualizar um estado para exibir a mensagem na interface, por exemplo:
-      // setCadastroSucesso(true);
+      if (data.success) {
+        toast.success(data.message);
+        setTimeout(() => {
+          window.location.href = '/Login';
+        }, 2000);
+      } else {
+        toast.error(data.message);
+      }
     })
     .catch(error => {
-      console.error('Erro:', error.message);
-      alert(error.message); // Exibe a mensagem de erro capturada
+      console.error('Erro:', error);
+      toast.error('Erro ao cadastrar usuário.');
     });
   };
-  
-  
 
   return (
     <div className='container'>
+      <ToastContainer />
       <form className="formulario" onSubmit={handleSubmit}>
         <h2>Cadastro</h2>
         <input className="input-text" type="number" name="cpf" placeholder="CPF" required onChange={handleChange} /><br />

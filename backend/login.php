@@ -20,14 +20,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enviar'])) {
         $resultado = $db->consultar('*', "login='$nomeuser' AND senha='$senhauser'");
 
         if ($resultado) {
-            echo '<div class="mensagem-sucesso">Login efetuado com sucesso!</div>';
-
-            header('Location: menu.php');
+            echo json_encode([
+                'success' => true,
+                'message' => 'Login efetuado com sucesso!'
+            ]);
         } else {
-            echo '<div class="mensagem-erro">Usuário não encontrado!</div>';
+            echo json_encode([
+                'success' => false,
+                'message' => 'Usuário ou senha incorreto!'
+            ]);
         }
     } else {
-        echo '<div class="mensagem-erro">Necessário preencher todos os campos</div>';
+        echo json_encode([
+            'success' => false,
+            'message' => 'Necessário preencher todos os campos'
+        ]);
     }
 }
 ?>
