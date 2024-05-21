@@ -5,6 +5,7 @@ import Cardapio from '../Pages/Cardapio';
 import Sobre from "../Pages/Sobre";
 import Cadastro from "../Pages/Cadastro";
 import Login from "../Pages/Login";
+import Gerenciamento from "../Pages/Gerenciamento";
 
 export default function Rotas() {
     return (
@@ -15,6 +16,7 @@ export default function Rotas() {
         <Route path='/Sobre' element={<Sobre />}/>
         <Route path='/Cadastro' element={<Cadastro />}/>
         <Route path='/Login' element={<Login />}/>
+        <Route path='/Gerenciamento' element={<Gerenciamento />}/>
       </Routes>
     </BrowserRouter>
     )

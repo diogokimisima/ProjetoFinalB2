@@ -24,6 +24,7 @@ export default function Topo() {
                         <Link className="link-topo" to="/Sobre">SOBRE</Link>
                         <Link className="link-topo" to="/Cadastro">CADASTRO</Link>
                         <Link className="link-topo" to="/Login">LOGIN</Link>
+                        <Link className="link-topo" to="/Gerenciamento">GERENCIAMENTO</Link>
                     </div>
 
                 </nav>

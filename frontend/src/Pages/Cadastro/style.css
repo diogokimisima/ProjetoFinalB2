@@ -1,40 +1,36 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-
-}
-
-
-
+/* 
+goldenrod dourado
+#4CAF50 verde
+#F9F6EE fundo
+#D4E9E2 verdeclaro fundo
+*/
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #201B2C;
+    background-color: #F9F6EE;
 
 }
 
 .formulario {
-    background-color: #fff;
-    padding: 40px 60px;
+    padding: 20px;
     border-radius: 12px;
     box-shadow: 4px 6px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 600px;
+    width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #2F2942;
-
+    background-color: white;
+    padding: 40px 60px;
+    color: black;
 }
 
 .titulo-formulario {
     text-align: center;
     margin-bottom: 20px;
     font-size: 32px;
-    color: #00FC91;
+    color: #4CAF50;
     letter-spacing: 6px;
 }
 
@@ -46,14 +42,14 @@
     margin-bottom: 10px;
     border: none;
     border-radius: 10px;
-    background-color: #514768;
-    color: white;
+    background-color: whitesmoke;
+    color: black;
 }
 
 .input-text::placeholder,
 .input-password::placeholder,
 .input-email::placeholder {
-    color: rgba(255, 255, 255, 0.63);
+    color: rgba(0, 0, 0, 0.507);
 }
 
 .input-text:focus,
@@ -65,8 +61,8 @@
 
 .botao-cadastrar {
     width: 100%;
-    background-color: #00FF87;
-    color: #002743;
+    background-color: #4CAF50;
+    color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -77,7 +73,7 @@
 }
 
 .botao-cadastrar:hover {
-    background-color: #09c06b;
+    background-color: #3f9042;
     font-weight: bold;
 }
 
@@ -88,5 +84,9 @@
 
 .link {
     text-decoration: none;
-    color: #00FF87;
+    color: goldenrod;
+}
+
+.link:hover {
+    color: rgb(171, 130, 25);
 }
