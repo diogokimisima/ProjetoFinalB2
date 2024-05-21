@@ -52,7 +52,7 @@ function Login() {
     <div className="container"> 
       <ToastContainer />
       <form className="formulario" onSubmit={handleSubmit}>
-        <h2>Login</h2>
+        <h2 className='titulo-formulario'>Login</h2>
         <input
           className="input-text"
           type="text"
