@@ -21,7 +21,7 @@ export default function Topo() {
   const handleLogout = () => {
     localStorage.removeItem('isAdmin');
     setIsAdmin(false);
-    window.location.href = '/Login';
+    window.location.href = '/';
   };
 
   return (
@@ -38,8 +38,12 @@ export default function Topo() {
             <Link className="link-topo" to="/">INICIO</Link>
             <Link className="link-topo" to="/Cardapio">CARDÁPIO</Link>
             <Link className="link-topo" to="/Sobre">SOBRE</Link>
+            {isLoggedIn ? null : (
+              <>
             <Link className="link-topo" to="/Cadastro">CADASTRO</Link>
             <Link className="link-topo" to="/Login">LOGIN</Link>
+             </>
+            )}
             {isLoggedIn && isAdmin && <Link className="link-topo" to="/Gerenciamento">GERENCIAMENTO</Link>}
             {isLoggedIn && <button className="link-topo button-logout" onClick={handleLogout}>logout</button>}
           </div>
