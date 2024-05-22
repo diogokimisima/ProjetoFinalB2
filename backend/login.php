@@ -17,7 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enviar'])) {
         $db->conectar();
         $db->setTabela("usuarios");
 
-        $resultado = $db->consultar('*', "login='$nomeuser' AND senha='$senhauser'");
+        $resultado = $db->consultar('*', "BINARY login = '$nomeuser' AND senha = '$senhauser'");
+
 
         if ($resultado) {
             $isAdmin = $nomeuser === 'admin' ? 1 : 0;
