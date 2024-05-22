@@ -20,9 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enviar'])) {
         $resultado = $db->consultar('*', "login='$nomeuser' AND senha='$senhauser'");
 
         if ($resultado) {
+            $isAdmin = $nomeuser === 'admin' ? 1 : 0;
             echo json_encode([
                 'success' => true,
-                'message' => 'Login efetuado com sucesso!'
+                'message' => 'Login efetuado com sucesso!',
+                'isAdmin' => $isAdmin
             ]);
         } else {
             echo json_encode([

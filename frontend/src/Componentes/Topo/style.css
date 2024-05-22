@@ -26,10 +26,22 @@ header div {
     padding: 0 20px;
     letter-spacing: 1px;
     font-weight: 600px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.button-logout {
+    color: goldenrod;
 }
 
 .link-topo:hover {
     color: goldenrod;
+    transition: color 0.3s ease
+}
+
+.button-logout:hover {
+    color: rgb(131, 97, 11);
 }
 
 .mobile-menu {

@@ -53,7 +53,7 @@ function Cadastro() {
   return (
     <div className='container'>
       <ToastContainer />
-      <form className="formulario" onSubmit={handleSubmit}>
+      <form className="formulario-cadastro" onSubmit={handleSubmit}>
         <h2 className='titulo-formulario'>Cadastro</h2>
         <input className="input-text" type="number" name="cpf" placeholder="CPF" required onChange={handleChange} /><br />
         <input className="input-text" type="text" name="nome" placeholder="Nome" required onChange={handleChange} /><br />

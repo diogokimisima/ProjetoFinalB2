@@ -36,6 +36,7 @@ function Login() {
 
       if (response.ok && data.success) {
         toast.success(data.message);
+        localStorage.setItem('isAdmin', data.isAdmin);
         setTimeout(() => {
           window.location.href = '/';
         }, 2000)
@@ -57,7 +58,7 @@ function Login() {
           className="input-text"
           type="text"
           name="nomeuser"
-          placeholder="Username"
+          placeholder="Login"
           value={nomeUsuario}
           onChange={handleInputChange}
           required
@@ -66,7 +67,7 @@ function Login() {
           className="input-password"
           type="password"
           name="senhauser"
-          placeholder="Password"
+          placeholder="senha"
           value={senhaUsuario}
           onChange={handleInputChange}
           required
