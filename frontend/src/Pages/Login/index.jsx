@@ -20,7 +20,7 @@ function Login() {
     e.preventDefault();
     
     try {
-      const response = await fetch('http://localhost/pastelariakina/backend/login.php', {
+      const response = await fetch('http://localhost/pastelariakina/backend/usuario/login.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'

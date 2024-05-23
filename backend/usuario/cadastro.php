@@ -6,8 +6,8 @@ header("Access-Control-Allow-Headers: Content-Type");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    include ("classe/Db.class.php");
-    include ("classe/Usuario.php");
+    include ("../classe/Db.class.php");
+    include ("../classe/Usuario.php");
 
     $db = new Db();
     $db->conectar();

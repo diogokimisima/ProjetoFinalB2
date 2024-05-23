@@ -4,7 +4,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type");
 
-require_once 'classe/Db.class.php';
+require_once '../classe/Db.class.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enviar'])) {
     

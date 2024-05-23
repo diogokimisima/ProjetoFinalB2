@@ -1,0 +1,67 @@
+/* style.css */
+
+.secao-principal-gerenciamento {
+    background-color: #f9f6ee;
+}
+
+.formulario-estoque {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center;
+    margin: 0 auto; 
+  }
+  
+  .formulario-estoque div {
+    margin-right: 10px; 
+  }
+  
+  .formulario-estoque label {
+    margin-bottom: 5px; 
+  }
+  
+  .formulario-estoque input {
+    width: 100%; 
+    padding: 8px; 
+    margin-bottom: 10px; 
+  }
+  
+  .formulario-estoque button {
+    display: flex;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+  .formulario-estoque button:hover {
+    background-color: #0056b3; 
+  }
+
+  label[for="cadastrar"] {
+    visibility: hidden;
+  }
+  
+
+.secao-estoque {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.secao-estoque th, .secao-estoque td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.secao-estoque th {
+  background-color: #f2f2f2;
+}
+
+
+.secao-estoque tr:hover {
+  background-color: #ddd;
+}
+
