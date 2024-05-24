@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $novoEstoque->gravar($db);
     $response['success'] = true;
-    $response['message'] = "Produto cadastrado!";
+    $response['message'] = "Item cadastrado!";
 
     echo json_encode($response);
 }
