@@ -14,11 +14,14 @@ const Gerenciamento = () => {
   });
 
   const [estoqueData, setEstoqueData] = useState([]);
+  const [editMode, setEditMode] = useState(false);
+  const [editId, setEditId] = useState(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  //Função POST do CRUD, para criar o produto
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -54,6 +57,7 @@ const Gerenciamento = () => {
       });
   };
 
+  //Função GET do CRUD, poder buscar os dados do produto
   const fetchEstoqueData = () => {
     fetch('http://localhost/pastelariakina/backend/estoque/get.php')
       .then(response => response.json())
@@ -70,6 +74,68 @@ const Gerenciamento = () => {
       });
   };
 
+  //Função UPDATE do CRUD, para deletar o produto
+  const handleEdit = (id) => {
+    const editItem = estoqueData.find(item => item.id === id);
+    setFormData(editItem);
+    setEditMode(true);
+    setEditId(id)
+  };
+
+  const handleUpdate = () => {
+    fetch(`http://localhost/pastelariakina/backend/estoque/update.php?id=${editId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          toast.success(data.message);
+          fetchEstoqueData();
+          setEditMode(false);
+          setEditId(null);
+          setFormData({
+            nomeEstoque: '',
+            quantidade: '',
+            nomeFuncionario: ''
+          });
+        } else {
+          toast.error(data.message);
+        }
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+        toast.error("Error ao atualizar item do estoque");
+      });
+  };
+
+
+  //Função DELETE do CRUD, para deletar o produto
+  const handleDelete = (id) => {
+    fetch(`http://localhost/pastelariakina/backend/estoque/delete.php?id=${id}`, {
+      method: 'DELETE',
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          toast.success(data.message);
+          fetchEstoqueData();
+        } else {
+          toast.error(data.message);
+        }
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+        toast.error('Erro ao excluir item do estoque');
+      });
+  };
+
+
+
+  //Para atualizar sempre a tabela de produtos
   useEffect(() => {
     fetchEstoqueData();
   }, []);
@@ -79,6 +145,7 @@ const Gerenciamento = () => {
       <Topo />
       <main className='secao-gerenciamento limitar-secao'>
         <ToastContainer />
+
         <h1>Gerenciamento De Estoque</h1>
         <form onSubmit={handleSubmit} className='formulario-estoque'>
           <div>
@@ -116,11 +183,20 @@ const Gerenciamento = () => {
               required
             />
           </div>
-          
-          <div>
-            <label htmlFor="cadastrar">cadastrar</label>
-            <button type="submit">Cadastrar</button>
-          </div>
+
+          {editMode ? (
+            <div>
+              <label htmlFor="Atualizar">Atualizar</label>
+              <button type="button" onClick={handleUpdate}>Atualizar</button>
+            </div>
+
+          ) : (
+            <div>
+              <label htmlFor="cadastrar">cadastrar</label>
+              <button type="submit">Cadastrar</button>
+            </div>
+          )}
+
         </form>
 
         <div className='secao-estoque'>
@@ -130,6 +206,7 @@ const Gerenciamento = () => {
                 <th>Nome do Estoque</th>
                 <th>Quantidade</th>
                 <th>Nome do Funcionário</th>
+                <th>Ação</th>
               </tr>
             </thead>
             <tbody>
@@ -138,6 +215,10 @@ const Gerenciamento = () => {
                   <td>{item.nomeEstoque}</td>
                   <td>{item.quantidade}</td>
                   <td>{item.nomeFuncionario}</td>
+                  <td>
+                    <button onClick={() => handleEdit(item.id)}>edit</button>
+                    <button onClick={() => handleDelete(item.id)} >delete</button>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -146,7 +227,7 @@ const Gerenciamento = () => {
       </main>
       <ScrollToTopButton />
       <Rodape />
-    </div>
+    </div >
   );
 };
 

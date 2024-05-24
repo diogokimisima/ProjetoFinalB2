@@ -41,9 +41,12 @@
     background-color: #0056b3; 
   }
 
-  label[for="cadastrar"] {
+  label[for="cadastrar"],
+  label[for="Atualizar"] {
     visibility: hidden;
   }
+
+  
   
 
 .secao-estoque {
