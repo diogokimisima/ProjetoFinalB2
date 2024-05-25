@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './style.css';
-
 import Topo from '../../Componentes/Topo';
 import Rodape from '../../Componentes/Rodape';
 import { ScrollToTopButton } from '../../Componentes/VoltarTopo';
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { Trash } from 'lucide-react';
-import { Pencil } from 'lucide-react';
-
-
 
 const Gerenciamento = () => {
   const [formData, setFormData] = useState({
@@ -139,6 +133,8 @@ const Gerenciamento = () => {
       });
   };
 
+
+
   //Para atualizar sempre a tabela de produtos
   useEffect(() => {
     fetchEstoqueData();
@@ -147,90 +143,87 @@ const Gerenciamento = () => {
   return (
     <div className='secao-principal-gerenciamento'>
       <Topo />
-      <main className='secao-gerenciamento '>
+      <main className='secao-gerenciamento limitar-secao'>
         <ToastContainer />
 
         <h1>Gerenciamento De Estoque</h1>
-          <form onSubmit={handleSubmit} className='formulario-estoque'>
-            <div>
-              <label htmlFor="nomeEstoque">Nome do Estoque</label>
-              <input
-                type="text"
-                name="nomeEstoque"
-                id="nomeEstoque"
-                placeholder="Digite aqui"
-                value={formData.nomeEstoque}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="quantidade">Quantidade</label>
-              <input
-                type="text"
-                name="quantidade"
-                id="quantidade"
-                placeholder="Digite aqui"
-                value={formData.quantidade}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="nomeFuncionario">Nome do Funcionário</label>
-              <input
-                type="text"
-                name="nomeFuncionario"
-                id="nomeFuncionario"
-                placeholder="Digite aqui"
-                value={formData.nomeFuncionario}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            {editMode ? (
-              <div>
-                <label htmlFor="Atualizar">Atualizar</label>
-                <button type="button" onClick={handleUpdate}>Atualizar</button>
-              </div>
-
-            ) : (
-              <div>
-                <label htmlFor="cadastrar">cadastrar</label>
-                <button type="submit">Cadastrar</button>
-              </div>
-            )}
-
-          </form>
-
-          <div className='secao-estoque'>
-            <table className='tabela'>
-              <thead>
-                <tr className='primeiro-tr'>
-                  <th>Nome do Estoque</th>
-                  <th>Quantidade</th>
-                  <th>Nome do Funcionário</th>
-                  <th>Ação</th>
-                </tr>
-              </thead>
-              <tbody>
-                {estoqueData.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item.nomeEstoque}</td>
-                    <td>{item.quantidade}</td>
-                    <td>{item.nomeFuncionario}</td>
-                    <td className='secao-botao'>
-                      <button onClick={() => handleEdit(item.id)}><Pencil /></button>
-                      <button onClick={() => handleDelete(item.id)}> <Trash /> </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        <form onSubmit={handleSubmit} className='formulario-estoque'>
+          <div>
+            <label htmlFor="nomeEstoque">Nome do Estoque:</label>
+            <input
+              type="text"
+              name="nomeEstoque"
+              id="nomeEstoque"
+              value={formData.nomeEstoque}
+              onChange={handleChange}
+              required
+            />
           </div>
+
+          <div>
+            <label htmlFor="quantidade">Quantidade:</label>
+            <input
+              type="text"
+              name="quantidade"
+              id="quantidade"
+              value={formData.quantidade}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="nomeFuncionario">Nome do Funcionário:</label>
+            <input
+              type="text"
+              name="nomeFuncionario"
+              id="nomeFuncionario"
+              value={formData.nomeFuncionario}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          {editMode ? (
+            <div>
+              <label htmlFor="Atualizar">Atualizar</label>
+              <button type="button" onClick={handleUpdate}>Atualizar</button>
+            </div>
+
+          ) : (
+            <div>
+              <label htmlFor="cadastrar">cadastrar</label>
+              <button type="submit">Cadastrar</button>
+            </div>
+          )}
+
+        </form>
+
+        <div className='secao-estoque'>
+          <table className='secao-estoque'>
+            <thead>
+              <tr>
+                <th>Nome do Estoque</th>
+                <th>Quantidade</th>
+                <th>Nome do Funcionário</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              {estoqueData.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.nomeEstoque}</td>
+                  <td>{item.quantidade}</td>
+                  <td>{item.nomeFuncionario}</td>
+                  <td>
+                    <button onClick={() => handleEdit(item.id)}>edit</button>
+                    <button onClick={() => handleDelete(item.id)} >delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </main>
       <ScrollToTopButton />
       <Rodape />

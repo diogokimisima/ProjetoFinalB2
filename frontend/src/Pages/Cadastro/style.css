@@ -1,3 +1,9 @@
+/* 
+goldenrod dourado
+#4CAF50 verde
+#F9F6EE fundo
+#D4E9E2 verdeclaro fundo
+*/
 .container {
     display: flex;
     justify-content: center;
@@ -37,7 +43,6 @@
     border-radius: 10px;
     background-color: whitesmoke;
     color: black;
-    border: 1px solid transparent;
 }
 
 .input-text::placeholder,

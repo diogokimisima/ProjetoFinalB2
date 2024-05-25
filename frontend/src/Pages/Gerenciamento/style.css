@@ -1,113 +1,70 @@
-/* 
-goldenrod dourado
-#4CAF50 verde
-#F9F6EE fundo
-#D4E9E2 verdeclaro fundo
-*/
+/* style.css */
 
-.secao-gerenciamento {
-  max-width: 1000px;
-  margin: 0 auto;
-}
 .secao-principal-gerenciamento {
-    background-color: #f9f6ee;
-
+  background-color: #f9f6ee;
 }
 
 .formulario-estoque {
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    margin: 40px auto; 
-    padding: 50px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 4px 6px 4px 6px rgba(0, 0, 0, 0.1);
-    gap: 10px;
-  }
-  
-  .formulario-estoque label {
-    margin-bottom: 5px; 
-  }
-  
-  .formulario-estoque input {
-    width: 100%; 
-    padding: 14px; 
-    margin-bottom: 10px; 
-    border: none;
-    background-color: whitesmoke;
-    border-radius: 10px;
-    border: 1px solid transparent;
-  }
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; 
+  align-items: center;
+  margin: 0 auto; 
+}
 
-  .formulario-estoque input::placeholder {
-    color: rgba(0, 0, 0, 0.507);
-  }
+.formulario-estoque div {
+  margin-right: 10px; 
+}
 
-   .formulario-estoque input:focus{
-    border: 1px solid #999898; 
-    outline: none;
-  }
-  
-  
-  .formulario-estoque button {
-    display: flex;
-    padding: 12px;
-    margin-bottom: 10px;
-    background-color: #4CAF50; 
-    color: white; 
-    border: none; 
-    cursor: pointer;
-    border-radius: 10px;
+.formulario-estoque label {
+  margin-bottom: 5px; 
+}
 
-  }
-  
-  .formulario-estoque button:hover {
-    background-color: #3f9742; 
-  }
+.formulario-estoque input {
+  width: 100%; 
+  padding: 8px; 
+  margin-bottom: 10px; 
+}
 
-  label[for="cadastrar"],
-  label[for="Atualizar"] {
-    visibility: hidden;
-  }
+.formulario-estoque button {
+  display: flex;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #007bff; 
+  color: white; 
+  border: none; 
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.formulario-estoque button:hover {
+  background-color: #0056b3; 
+}
+
+label[for="cadastrar"],
+label[for="Atualizar"] {
+  visibility: hidden;
+}
+
+
+
 
 .secao-estoque {
-  width: 100%;
-  border: none;
-  
+width: 100%;
+border-collapse: collapse;
 }
 
-.tabela {
-  border-radius: 10px;
-  box-shadow: 4px 6px 4px 6px rgba(0, 0, 0, 0.1);
+.secao-estoque th, .secao-estoque td {
+border: 1px solid #ddd;
+padding: 8px;
 }
-
 
 .secao-estoque th {
-  text-align: left;
-  padding: 20px;
-  border-bottom: 2px solid whitesmoke;
-  margin: 0;
-  font-size: 18px;
+background-color: #f2f2f2;
 }
 
-.secao-estoque td {
-  text-align: left;
-  padding: 20px;
-  font-size: 16px;
-  
-}
 
-.secao-estoque button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.secao-botao {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly start;
-  gap: 10px;
+.secao-estoque tr:hover {
+background-color: #ddd;
 }
 
