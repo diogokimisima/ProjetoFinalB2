@@ -14,7 +14,7 @@
   .cards-horario {
     display: flex;
     flex-direction: row;
-
+    flex-wrap: wrap;
   }
 
   table {
@@ -110,7 +110,6 @@
 
     .cards-horario {
       display: flex;
-      flex-direction: column;
     }
 
   }

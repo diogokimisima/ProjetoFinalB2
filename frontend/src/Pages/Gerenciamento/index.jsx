@@ -2,11 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './style.css';
+import { Trash, Trash2 } from "lucide-react";
+import { Pencil, PencilLine } from "lucide-react";
+import { Link } from 'react-router-dom'; 
+
 import Topo from '../../Componentes/Topo';
 import Rodape from '../../Componentes/Rodape';
 import { ScrollToTopButton } from '../../Componentes/VoltarTopo';
 
 const Gerenciamento = () => {
+  
   const [formData, setFormData] = useState({
     nomeEstoque: '',
     quantidade: '',
@@ -16,6 +21,29 @@ const Gerenciamento = () => {
   const [estoqueData, setEstoqueData] = useState([]);
   const [editMode, setEditMode] = useState(false);
   const [editId, setEditId] = useState(null);
+  const [hoveredButtonId, setHoveredButtonId] = useState(null);
+  const [hoveredPencilId, setHoveredPencilId] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+
+
+  const handleMouseEnter = (id) => {
+    setHoveredButtonId(id);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredButtonId(null);
+  };
+
+  const handlePencilMouseEnter = (id) => {
+    setHoveredPencilId(id);
+  };
+
+  const handlePencilMouseLeave = () => {
+    setHoveredPencilId(null);
+  };
+
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -133,51 +161,97 @@ const Gerenciamento = () => {
       });
   };
 
-
-
-  //Para atualizar sempre a tabela de produtos
+  useEffect(() => {
+    const checkAdminStatus = async () => {
+      try {
+        const adminStatus = localStorage.getItem('isAdmin');
+        setIsAdmin(adminStatus === '1');
+  
+        if (adminStatus === '1') {
+          const nomeuser = "admin"; // Usuário admin
+  
+          const formData = new FormData();
+          formData.append('nomeuser', nomeuser);
+  
+          const response = await fetch('http://localhost/pastelariakina/backend/classe/Db.class.php', {
+            method: 'POST',
+            body: formData
+          });
+  
+          if (!response.ok) {
+            // Handle error
+            return;
+          }
+  
+          const data = await response.json();
+          if (data.success) {
+            setIsAdmin(data.isAdmin === 1 ? 1 : 0);
+          } else {
+          }
+        } else {
+        }
+      } catch (error) {
+      }
+    };
+  
+    checkAdminStatus();
+  }, []);
+  
+  // Para atualizar sempre a tabela de produtos
   useEffect(() => {
     fetchEstoqueData();
   }, []);
 
+  if (!isAdmin) {
+    return (
+      <div className='secao-error'>
+        <h3>Você não tem permissão para acessar esta página.</h3>
+        <Link className='voltar-home' to="/">Voltar Home</Link>
+      </div>
+    );
+  }
+
   return (
     <div className='secao-principal-gerenciamento'>
       <Topo />
-      <main className='secao-gerenciamento limitar-secao'>
+      <main className='secao-gerenciamento'>
         <ToastContainer />
 
         <h1>Gerenciamento De Estoque</h1>
         <form onSubmit={handleSubmit} className='formulario-estoque'>
-          <div>
-            <label htmlFor="nomeEstoque">Nome do Estoque:</label>
+          <div className='campo-formulario'>
+            <label htmlFor="nomeEstoque">Nome do Estoque</label>
             <input
               type="text"
               name="nomeEstoque"
               id="nomeEstoque"
+              placeholder='Digite aqui'
               value={formData.nomeEstoque}
               onChange={handleChange}
               required
             />
           </div>
 
-          <div>
-            <label htmlFor="quantidade">Quantidade:</label>
+          <div className='campo-formulario'>
+            <label htmlFor="quantidade">Quantidade</label>
             <input
               type="text"
               name="quantidade"
               id="quantidade"
+              placeholder='Digite aqui'
               value={formData.quantidade}
               onChange={handleChange}
               required
             />
           </div>
 
-          <div>
-            <label htmlFor="nomeFuncionario">Nome do Funcionário:</label>
+          <div className='campo-formulario'>
+            <label htmlFor="nomeFuncionario">Nome do Funcionário</label>
             <input
               type="text"
               name="nomeFuncionario"
               id="nomeFuncionario"
+              placeholder='Digite aqui'
               value={formData.nomeFuncionario}
               onChange={handleChange}
               required
@@ -199,9 +273,9 @@ const Gerenciamento = () => {
 
         </form>
 
-        <div className='secao-estoque'>
+        <div className='secao-principal-estoque'>
           <table className='secao-estoque'>
-            <thead>
+            <thead className='secao-th'>
               <tr>
                 <th>Nome do Estoque</th>
                 <th>Quantidade</th>
@@ -215,9 +289,22 @@ const Gerenciamento = () => {
                   <td>{item.nomeEstoque}</td>
                   <td>{item.quantidade}</td>
                   <td>{item.nomeFuncionario}</td>
-                  <td>
-                    <button onClick={() => handleEdit(item.id)}>edit</button>
-                    <button onClick={() => handleDelete(item.id)} >delete</button>
+                  <td className='secao-botao-estoque'>
+                    <button
+                      onMouseEnter={() => handlePencilMouseEnter(item.id)}
+                      onMouseLeave={handlePencilMouseLeave}
+                      onClick={() => handleEdit(item.id)}
+                    >
+                      {hoveredPencilId === item.id ? <PencilLine /> : <Pencil />}
+                    </button>
+                    <button
+                      onMouseEnter={() => handleMouseEnter(item.id)}
+                      onMouseLeave={handleMouseLeave}
+                      onClick={() => handleDelete(item.id)}
+                    >
+                      {hoveredButtonId === item.id ? <Trash2 /> : <Trash />}
+                    </button>
+
                   </td>
                 </tr>
               ))}
