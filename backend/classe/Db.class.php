@@ -30,14 +30,14 @@
  * @param  string    $nomedb      Nome do banco de dados
  * @param  string    $senhadb     Senha do banco de dados
  */
-     function __construct($host="127.0.0.1",
-                          $porta="3307",
-                          $usudb="root",
-                          $nomedb="unisale",
-                          $senhadb=""){
+     function __construct($host="localhost",
+                          $porta="3306",
+                          $usudb="id22224430_diogorafa",
+                          $nomedb="id22224430_projetob2",
+                          $senhadb="@Projetob2"){
      	$this->host     = $host;
      	$this->porta    = $porta;
-        $this->nomedb   = $nomedb;
+      $this->nomedb   = $nomedb;
      	$this->usudb    = $usudb;
      	$this->senhadb  = $senhadb;
 
@@ -50,7 +50,7 @@
   */	 
  public function conectar(){
  $dados = "mysql:host="       . $this->host;
- $dados = $dados . ";port="   . $this->porta;
+//  $dados = $dados . ";port="   . $this->porta;
  $dados = $dados . ";dbname=" . $this->nomedb;
  $this->conexao = null;
  try {
