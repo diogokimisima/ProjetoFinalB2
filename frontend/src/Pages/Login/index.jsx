@@ -20,7 +20,7 @@ function Login() {
     e.preventDefault();
     
     try {
-      const response = await fetch('https://projetob2-sergio.000webhostapp.com/usuario/login.php', {
+      const response = await fetch('https://pastelariakina.000webhostapp.com/usuario/login.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'

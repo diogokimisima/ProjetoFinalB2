@@ -21,7 +21,7 @@ function Cadastro() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('https://projetob2-sergio.000webhostapp.com/usuario/cadastro.php', {
+    fetch('https://pastelariakina.000webhostapp.com/usuario/cadastro.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'

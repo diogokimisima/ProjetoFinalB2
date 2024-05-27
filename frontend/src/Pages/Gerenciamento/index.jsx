@@ -53,7 +53,7 @@ const Gerenciamento = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost/pastelariakina/backend/estoque/post.php', {
+    fetch('https://pastelariakina.000webhostapp.com/estoque/post.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -87,7 +87,7 @@ const Gerenciamento = () => {
 
   //Função GET do CRUD, poder buscar os dados do produto
   const fetchEstoqueData = () => {
-    fetch('http://localhost/pastelariakina/backend/estoque/get.php')
+    fetch('https://pastelariakina.000webhostapp.com/estoque/get.php')
       .then(response => response.json())
       .then(data => {
         if (data.success) {
@@ -111,7 +111,7 @@ const Gerenciamento = () => {
   };
 
   const handleUpdate = () => {
-    fetch(`http://localhost/pastelariakina/backend/estoque/update.php?id=${editId}`, {
+    fetch(`https://pastelariakina.000webhostapp.com/estoque/update.php?id=${editId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -143,7 +143,7 @@ const Gerenciamento = () => {
 
   //Função DELETE do CRUD, para deletar o produto
   const handleDelete = (id) => {
-    fetch(`http://localhost/pastelariakina/backend/estoque/delete.php?id=${id}`, {
+    fetch(`https://pastelariakina.000webhostapp.com/estoque/delete.php?id=${id}`, {
       method: 'DELETE',
     })
       .then(response => response.json())
@@ -173,7 +173,7 @@ const Gerenciamento = () => {
           const formData = new FormData();
           formData.append('nomeuser', nomeuser);
   
-          const response = await fetch('http://localhost/pastelariakina/backend/classe/Db.class.php', {
+          const response = await fetch('https://pastelariakina.000webhostapp.com/classe/Db.class.php', {
             method: 'POST',
             body: formData
           });
