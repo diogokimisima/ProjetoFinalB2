@@ -220,12 +220,12 @@ const Gerenciamento = () => {
         <h1>Gerenciamento De Estoque</h1>
         <form onSubmit={handleSubmit} className='formulario-estoque'>
           <div className='campo-formulario'>
-            <label htmlFor="nomeEstoque">Nome do Estoque</label>
+            <label htmlFor="nomeEstoque">Estoque</label>
             <input
               type="text"
               name="nomeEstoque"
               id="nomeEstoque"
-              placeholder='Digite aqui'
+              placeholder='nome do estoque'
               value={formData.nomeEstoque}
               onChange={handleChange}
               required
@@ -238,7 +238,7 @@ const Gerenciamento = () => {
               type="text"
               name="quantidade"
               id="quantidade"
-              placeholder='Digite aqui'
+              placeholder='(caixas, unidades, tabuleiro)'
               value={formData.quantidade}
               onChange={handleChange}
               required
@@ -246,12 +246,12 @@ const Gerenciamento = () => {
           </div>
 
           <div className='campo-formulario'>
-            <label htmlFor="nomeFuncionario">Nome do Funcionário</label>
+            <label htmlFor="nomeFuncionario">Funcionário</label>
             <input
               type="text"
               name="nomeFuncionario"
               id="nomeFuncionario"
-              placeholder='Digite aqui'
+              placeholder='nome do funcionário'
               value={formData.nomeFuncionario}
               onChange={handleChange}
               required
@@ -277,9 +277,9 @@ const Gerenciamento = () => {
           <table className='secao-estoque'>
             <thead className='secao-th'>
               <tr>
-                <th>Nome do Estoque</th>
+                <th>Estoque</th>
                 <th>Quantidade</th>
-                <th>Nome do Funcionário</th>
+                <th>Funcionário</th>
                 <th>Ação</th>
               </tr>
             </thead>

@@ -155,3 +155,94 @@ label[for="Atualizar"] {
   font-size: 20px;
 } 
 
+@media (max-width: 1020px) {
+
+  .secao-gerenciamento {
+    max-width: 800px;
+  }
+
+  .formulario-estoque label {
+    font-size: 15px;
+  }
+
+  
+}
+
+@media (max-width: 815px) {
+  .secao-gerenciamento {
+    max-width: 600px;
+  }
+
+  .formulario-estoque label {
+    font-size: 15px;
+  }
+
+  .secao-estoque th {
+    text-align: left;
+    font-size: 17px;
+    padding: 20px 0;
+  }
+  
+  .secao-estoque td {
+    text-align: left;
+    font-size: 14px;
+    padding: 20px 0;
+  }
+  
+  .formulario-estoque input {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 610px) {
+  .secao-gerenciamento {
+    max-width: 450px;
+  }
+
+  .formulario-estoque {  
+    flex-direction: column;
+  }
+
+  .formulario-estoque {
+    margin-bottom: 70px;
+    border-radius: 10px ;
+    padding: 30px 30px;
+    gap: 20px;
+  }
+  
+  .formulario-estoque div {
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
+@media (max-width: 465px) {
+  .secao-gerenciamento {
+    max-width: 370px;
+  }
+
+  .formulario-estoque {  
+    flex-direction: column;
+  }
+
+  .formulario-estoque {
+    margin-bottom: 70px;
+    border-radius: 10px ;
+    padding: 30px 30px;
+    gap: 20px;
+  }
+
+  .secao-estoque th {
+    text-align: center;
+    font-size: 12px;
+    padding: 20px 0;
+  }
+  
+  .secao-estoque td {
+    font-size: 12px;
+    padding: 20px 0;
+  }
+}
+
+
